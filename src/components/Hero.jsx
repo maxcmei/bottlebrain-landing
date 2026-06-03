@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
-      <div className="hero-gradient min-h-screen relative flex items-center">
-        <div className="mx-auto max-w-[1180px] w-full px-5 relative z-10 pt-32 pb-24">
+      <div className="hero-gradient min-h-screen relative flex items-start">
+        <div className="mx-auto max-w-[1180px] w-full px-5 relative z-10 pt-28 pb-16">
           <div className="max-w-xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-6 text-lg text-white/80 max-w-md leading-relaxed font-medium"
+              className="mt-6 text-base text-white/80 max-w-sm leading-relaxed font-medium"
             >
               BottleBrain turns your inventory into a 24/7 AI sommelier
               that speaks your customers&rsquo; language, recommends perfect
@@ -56,18 +56,18 @@ export default function Hero() {
         </div>
 
         <div
-          className="hidden lg:block absolute right-[-6%] xl:right-[-2%] bottom-0"
-          style={{ transform: 'rotate(-12deg) translateY(28%)' }}
+          className="hidden lg:block absolute bottom-0"
+          style={{ right: '-1%', transform: 'rotate(-12deg) translateY(22%)' }}
         >
           <div className="relative">
             <div
               style={{
                 position: 'absolute',
-                width: 600,
-                height: 600,
+                width: 700,
+                height: 700,
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(255,255,255,0.13) 0%, transparent 65%)',
-                top: '50%',
+                background: 'radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 65%)',
+                top: '35%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 0,
@@ -76,7 +76,7 @@ export default function Hero() {
             <img
               src="/assets/bottle.png"
               alt="Wine bottle"
-              className="relative z-10 h-[110vh] object-contain drop-shadow-2xl"
+              className="relative z-10 h-[125vh] object-contain drop-shadow-2xl"
             />
           </div>
         </div>
