@@ -18,7 +18,7 @@ const steps = [
     num: '3',
     icon: TrendingUp,
     title: 'More bottles sold',
-    text: 'Teams close decisions faster, avoid dead-end recommendations, and increase basket value with less effort.',
+    text: 'Shoppers get confident recommendations they trust, spend more per visit, and come back because someone always knew exactly what they needed.',
   },
 ]
 
@@ -44,7 +44,7 @@ export default function HowItWorks() {
             How it Works
           </h2>
           <p className="mt-4 text-ink-500 text-lg max-w-lg mx-auto">
-            From shelf data to smarter recommendations in minutes.
+            Your inventory, your voice, your sommelier &mdash; live in under 24 hours.
           </p>
         </motion.div>
 

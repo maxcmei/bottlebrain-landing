@@ -9,11 +9,11 @@ const items = [
   },
   {
     q: 'Does it work with my current POS?',
-    a: 'BottleBrain integrates with major POS systems including Lightspeed, Square, and Shopify POS. Custom integrations are available for other systems upon request.',
+    a: 'BottleBrain is designed to work alongside your existing systems. We handle onboarding personally for every new retailer to make sure the setup fits your workflow.',
   },
   {
     q: 'What happens if a bottle sells out?',
-    a: 'BottleBrain automatically suggests alternatives with similar flavor profiles when items go out of stock. Your catalog syncs in real-time so recommendations are always accurate.',
+    a: 'BottleBrain automatically suggests alternatives with similar flavor profiles when items go out of stock. Your catalog stays current through automatic sync with modern POS systems, so recommendations are always accurate.',
   },
   {
     q: 'Can I customize the AI personality?',

@@ -6,9 +6,9 @@ const TEMPLATE_ID = 'template_0i3svqi' // replace after EmailJS setup
 const PUBLIC_KEY = 'VHggPRybpobmYwyWZ'   // replace after EmailJS setup
 
 const bullets = [
-  'Live recommendations using your real catalog data',
+  'Live demo using your actual wine catalog',
   'POS and inventory workflow compatibility review',
-  'Clear ROI model for independent wine retailers',
+  'Walk away knowing exactly how to get started',
 ]
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

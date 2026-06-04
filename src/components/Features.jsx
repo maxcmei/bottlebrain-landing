@@ -12,14 +12,14 @@ const features = [
   {
     icon: Search,
     title: 'Natural language search',
-    text: "Ask for 'bright, dry Italian red under $30' and get relevant bottles instantly with alternatives.",
+    text: 'Ask for a bold red under $40 for a steak dinner and get the right bottles instantly, with alternatives if your first pick is out of stock.',
     span: 'col-span-12 md:col-span-5',
     dark: true,
   },
   {
     icon: User,
     title: 'Personalized',
-    text: 'Learns customer preferences and repeat patterns to recommend with context every time.',
+    text: 'Translates anything, a mood, a meal, a vague feeling, into a wine recommendation your customer will actually love.',
     span: 'col-span-12 sm:col-span-6 md:col-span-4',
     dark: false,
   },
@@ -32,8 +32,8 @@ const features = [
   },
   {
     icon: Smartphone,
-    title: 'Mobile Friendly',
-    text: 'Works beautifully on phones and tablets so staff can help customers from anywhere in the shop.',
+    title: 'Anywhere, Anytime',
+    text: 'Whether a customer is browsing your website at home or a staff member is helping someone on the shop floor, BottleBrain works beautifully on any device.',
     span: 'col-span-12 sm:col-span-12 md:col-span-4',
     dark: false,
   },
