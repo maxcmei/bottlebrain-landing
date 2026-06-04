@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 
-const SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID'   // replace after EmailJS setup
-const TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID' // replace after EmailJS setup
-const PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY'   // replace after EmailJS setup
+const SERVICE_ID = 'service_mwfwa1j'   // replace after EmailJS setup
+const TEMPLATE_ID = 'template_0i3svqi' // replace after EmailJS setup
+const PUBLIC_KEY = 'VHggPRybpobmYwyWZ'   // replace after EmailJS setup
 
 const bullets = [
   'Live recommendations using your real catalog data',
