@@ -32,7 +32,7 @@ const features = [
   },
   {
     icon: Smartphone,
-    title: 'Anywhere, Anytime',
+    title: 'Anytime, Anywhere',
     text: 'Whether a customer is browsing your website at home or a staff member is helping someone on the shop floor, BottleBrain works beautifully on any device.',
     span: 'col-span-12 sm:col-span-12 md:col-span-4',
     dark: false,
