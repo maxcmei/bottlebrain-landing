@@ -73,11 +73,16 @@ export default function Hero() {
                 zIndex: 0,
               }}
             />
-            <img
-              src="/assets/bottle.png"
-              alt="Wine bottle"
-              className="relative z-10 h-[125vh] object-contain drop-shadow-2xl"
-            />
+            <picture className="contents">
+              <source srcSet="/assets/bottle.webp" type="image/webp" />
+              <img
+                src="/assets/bottle.png"
+                alt="Wine bottle"
+                fetchPriority="high"
+                decoding="async"
+                className="relative z-10 h-[125vh] object-contain drop-shadow-2xl"
+              />
+            </picture>
           </div>
         </div>
       </div>
