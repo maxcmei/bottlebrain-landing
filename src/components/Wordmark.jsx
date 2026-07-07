@@ -1,29 +1,32 @@
-export default function Wordmark({ className = "", scrolled = false }) {
+/*
+ * Wordmark. The glass "i" uses the original PNG as a CSS mask filled
+ * with currentColor, so the whole mark — text and glass — is colored
+ * by ONE inherited value and transitions as ONE color animation.
+ * No filters, no image swaps: nothing that can flicker.
+ *
+ * The parent (e.g. the navbar link) sets `color` and its transition;
+ * everything here simply inherits it.
+ */
+const glassMask = {
+  display: 'inline-block',
+  height: '0.7em',
+  aspectRatio: '244 / 502',
+  backgroundColor: 'currentColor',
+  WebkitMaskImage: 'url(/assets/glass.png)',
+  maskImage: 'url(/assets/glass.png)',
+  WebkitMaskSize: 'contain',
+  maskSize: 'contain',
+  WebkitMaskRepeat: 'no-repeat',
+  maskRepeat: 'no-repeat',
+  WebkitMaskPosition: 'center bottom',
+  maskPosition: 'center bottom',
+}
+
+export default function Wordmark({ className = '' }) {
   return (
     <span className={`font-extrabold tracking-tight ${className}`}>
       BottleBra
-      <span
-        style={{
-          display: 'inline-block',
-          verticalAlign: 'baseline',
-          overflow: 'hidden',
-          height: '0.7em',
-        }}
-      >
-        <img
-          src={scrolled ? '/assets/glass1.png' : '/assets/glass.png'}
-          alt=""
-          aria-hidden="true"
-          style={{
-            display: 'block',
-            height: '100%',
-            width: 'auto',
-            opacity: 1,
-            transition: 'filter 0.15s ease, opacity 0.15s ease',
-            filter: scrolled ? 'brightness(0)' : 'none',
-          }}
-        />
-      </span>
+      <span aria-hidden="true" style={glassMask} />
       n
     </span>
   )

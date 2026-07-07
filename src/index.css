@@ -5,8 +5,8 @@
 :root {
   --burgundy: #8b1a3a;
   --burgundy-deep: #2a0a14;
-  --wine-dark: #1e0a0f;
-  --blush: #f5e1e0;
+  --wine-black: #160308;
+  --blush: #fbe4ea;
   --ink: #1d1520;
 }
 
@@ -18,7 +18,7 @@
   }
 
   body {
-    @apply font-sans text-ink-900 bg-white overflow-x-hidden;
+    @apply font-sans text-ink-900 bg-cream-50 overflow-x-hidden;
     margin: 0;
   }
 
@@ -29,12 +29,144 @@
 }
 
 @layer utilities {
-  .hero-gradient {
+  /* Cinematic dark-burgundy atmosphere for the hero */
+  .hero-atmosphere {
+    background-color: var(--wine-black);
     background-image:
-      radial-gradient(ellipse at 15% 60%, rgba(180,50,80,0.4) 0%, transparent 45%),
-      radial-gradient(ellipse at 75% 40%, rgba(220,80,120,0.6) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 50%, #c23560 0%, #8b1a3a 40%, #4a0d20 100%);
+      radial-gradient(ellipse 90% 60% at 78% 12%, rgba(198, 58, 93, 0.34) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 55% at 12% 88%, rgba(139, 26, 58, 0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 50% 45%, rgba(61, 14, 29, 0.6) 0%, transparent 70%),
+      linear-gradient(180deg, #1d0510 0%, #160308 55%, #12030a 100%);
   }
+
+  /* Dark section variant (analytics) */
+  .dark-atmosphere {
+    background-color: var(--wine-black);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 85% 0%, rgba(139, 26, 58, 0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 8% 100%, rgba(198, 58, 93, 0.18) 0%, transparent 60%),
+      linear-gradient(180deg, #190409 0%, #160308 100%);
+  }
+
+  /* Film grain — tiny inline SVG turbulence, tiled.
+     No blend mode: blending forces re-compositing on every scroll
+     frame; plain low opacity is nearly identical and scrolls free. */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  /* Fine dotted texture for light sections */
+  .dot-texture {
+    background-image: radial-gradient(rgba(29, 21, 32, 0.055) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Parchment — light sections get warm corner washes + a whisper of
+     the cellar's diamond lattice, so cream never reads as blank white.
+     Pure background layers: stays static, so page bubbles paint above. */
+  .parchment {
+    background-image:
+      radial-gradient(ellipse 55% 45% at 84% 6%, rgba(232, 139, 160, 0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 42% at 8% 96%, rgba(217, 176, 112, 0.11) 0%, transparent 70%),
+      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px);
+  }
+
+  .parchment-alt {
+    background-image:
+      radial-gradient(ellipse 55% 45% at 12% 8%, rgba(217, 176, 112, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 52% 44% at 90% 92%, rgba(232, 139, 160, 0.12) 0%, transparent 70%),
+      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Wine-rack diamond lattice — the cellar's grid. Pair with an
+     inline mask-image so it only shows where the light falls. */
+  .cellar-rack {
+    background-image:
+      repeating-linear-gradient(45deg, rgba(232, 139, 160, 0.12) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(232, 139, 160, 0.12) 0 1px, transparent 1px 58px);
+  }
+
+  /* Candlelit version — brighter, warmer, revealed around the cursor */
+  .cellar-rack-lit {
+    background-image:
+      repeating-linear-gradient(45deg, rgba(232, 139, 160, 0.34) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(217, 176, 112, 0.28) 0 1px, transparent 1px 58px);
+  }
+
+  /* Diagonal cinematic light sweep for dark sections */
+  .light-streak {
+    background-image:
+      linear-gradient(112deg, transparent 38%, rgba(255, 255, 255, 0.045) 47%, rgba(255, 255, 255, 0.02) 53%, transparent 62%),
+      linear-gradient(285deg, transparent 78%, rgba(232, 139, 160, 0.05) 92%, transparent 100%);
+  }
+}
+
+/* ——— Compositor-thread ambient animations ———
+   All continuous motion (bubbles, bobs, pulses) runs as CSS
+   transform/opacity animations so scrolling never competes with
+   JavaScript for the main thread. Per-element variation comes in
+   through custom properties set inline. */
+
+@keyframes bb-rise {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  12% {
+    transform: translate3d(var(--dx1), calc(var(--rise) * 0.12), 0);
+    opacity: var(--peak);
+  }
+  60% {
+    transform: translate3d(var(--dx2), calc(var(--rise) * 0.6), 0);
+    opacity: var(--peak);
+  }
+  85% {
+    transform: translate3d(var(--dx3), calc(var(--rise) * 0.85), 0);
+    opacity: calc(var(--peak) * 0.75);
+  }
+  100% {
+    transform: translate3d(0, var(--rise), 0);
+    opacity: 0;
+  }
+}
+
+.bb-bubble {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0;
+  animation: bb-rise var(--dur, 24s) linear var(--delay, 0s) infinite both;
+  will-change: transform, opacity;
+}
+
+@keyframes bb-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--bob, -10px)); }
+}
+
+.bb-bob {
+  animation: bb-bob var(--bob-dur, 6s) ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes bb-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.06); }
+}
+
+.bb-pulse {
+  animation: bb-pulse 9s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
