@@ -1,7 +1,4 @@
-import { motion } from 'framer-motion'
 import { Reveal, SectionHeading } from './ui'
-
-const ease = [0.21, 0.6, 0.35, 1]
 
 function Card({ children, className = '', delay = 0 }) {
   return (
@@ -29,25 +26,25 @@ function BudgetVisual() {
       <div className="bg-cream-100 rounded-2xl p-5">
         <div className="flex items-center justify-between text-[12px] font-semibold text-ink-500 mb-1">
           <span>&ldquo;Around $60&rdquo;</span>
-          <span className="text-wine-800 font-bold">targets $42&ndash;$60</span>
+          <span className="text-wine-800 font-bold">targets $42&ndash;$66</span>
         </div>
+        {/* Static band (no whileInView — it silently failed to render on some
+            loads). $0–$80 scale: $42 = 52.5%, $60 = 75%, $66 = 82.5%. The tail
+            past the $60 tick fades — the stretch zone above the stated budget. */}
         <div className="relative h-2.5 rounded-full bg-ink-900/[0.07] mt-3">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.3, ease }}
-            style={{ originX: 0 }}
-            className="absolute left-[52%] right-[25%] top-0 bottom-0 rounded-full bg-gradient-to-r from-wine-600 to-wine-800"
+          <div
+            className="absolute left-[52.5%] right-[17.5%] top-0 bottom-0 rounded-full"
+            style={{ background: 'linear-gradient(90deg, #bc2f52 0%, #8b1a3a 70%, rgba(139,26,58,0.35) 100%)' }}
           />
           <div className="absolute -top-1 left-[75%] w-[2px] h-[18px] bg-ink-900/30 rounded" />
         </div>
         <div className="flex justify-between text-[10.5px] text-ink-400 font-medium mt-2">
           <span>$0</span><span>$40</span><span className="text-ink-900 font-bold">$60</span><span>$80</span>
         </div>
-        <div className="flex gap-1.5 mt-4">
+        <div className="flex flex-wrap gap-1.5 mt-4">
           <span className="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">$52 ✓</span>
           <span className="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">$58 ✓</span>
+          <span className="text-[10.5px] font-bold text-wine-800 bg-wine-50 border border-wine-100 rounded-full px-2.5 py-1">$64 · worth the stretch</span>
           <span className="text-[10.5px] font-semibold text-ink-400 bg-ink-900/[0.04] rounded-full px-2.5 py-1 line-through">$25</span>
         </div>
       </div>
@@ -165,6 +162,7 @@ export default function Features() {
           badge="What it does"
           title={<>Everything a great floor somm does.<br className="hidden md:block" /> On every page, all at once.</>}
           sub="Not a chatbot bolted onto your site — a salesperson trained on your cellar, your policies, and the way wine actually gets hand-sold."
+          fadeRgb="248, 243, 236"
         />
 
         <div className="grid md:grid-cols-3 gap-5 mt-16">
@@ -172,7 +170,7 @@ export default function Features() {
             <BudgetVisual />
             <CardText
               title="Respects the budget — upward"
-              body="Say “around $60” and it pulls from $42–60, never the bargain bin. Customers spend their budget with confidence instead of trading down."
+              body="Say “around $60” and it pulls from $42–66 — never the bargain bin, and a touch over when the bottle earns it. Customers spend with confidence instead of trading down."
             />
           </Card>
 

@@ -32,10 +32,30 @@ export function Reveal({ children, delay = 0, y = 28, className = '', ...rest })
   )
 }
 
-/** Section heading: badge + serif headline + optional sub */
-export function SectionHeading({ badge, title, sub, dark = false, center = true }) {
+/** Soft radial wash in the section's own background color, placed behind a
+    text block so the ambient lattice/bubbles recede under copy. Painted as a
+    positioned element AFTER the ambient layers in DOM order, so it dims both
+    the section-background pattern and the page bubbles — but never the text,
+    which paints above it. Pass the section's bg as `rgb` ("r, g, b"). */
+export function PatternFade({ rgb = '253, 251, 248', strength = 0.9, className = '' }) {
   return (
-    <div className={center ? 'text-center' : ''}>
+    <div
+      aria-hidden="true"
+      className={`absolute pointer-events-none ${className}`}
+      style={{
+        inset: '-16% -22%',
+        background: `radial-gradient(ellipse 62% 68% at 50% 50%, rgba(${rgb}, ${strength}) 0%, rgba(${rgb}, ${strength * 0.55}) 46%, transparent 74%)`,
+      }}
+    />
+  )
+}
+
+/** Section heading: badge + serif headline + optional sub */
+export function SectionHeading({ badge, title, sub, dark = false, center = true, fadeRgb }) {
+  const rgb = fadeRgb || (dark ? '22, 3, 8' : '253, 251, 248')
+  return (
+    <div className={`relative ${center ? 'text-center' : ''}`}>
+      <PatternFade rgb={rgb} strength={dark ? 0.55 : 0.9} />
       <Reveal>
         <SectionBadge dark={dark}>{badge}</SectionBadge>
       </Reveal>

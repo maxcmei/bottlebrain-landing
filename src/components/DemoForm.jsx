@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { Check } from 'lucide-react'
-import { Reveal } from './ui'
+import { Reveal, PatternFade } from './ui'
 import { CellarRack } from './cellar'
 
 const SERVICE_ID = 'service_mwfwa1j'
@@ -95,12 +95,16 @@ export default function DemoForm() {
           <div data-nav-dark className="relative overflow-hidden rounded-[40px] hero-atmosphere grain">
             <CellarRack base="radial-gradient(ellipse 60% 85% at 28% 45%, black 0%, transparent 76%)" spotlight={300} />
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-8 sm:p-12 lg:p-16">
-              <div>
+              <div className="relative">
+                <PatternFade rgb="22, 3, 8" strength={0.5} />
+                {/* relative: lift the text into the positioned layer so the
+                    fade above paints UNDER it, not over it */}
+                <div className="relative">
                 <h2
                   className="font-display font-medium text-cream-50 text-balance"
                   style={{ fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.08, letterSpacing: '-0.015em' }}
                 >
-                  Taste it with{' '}
+                  Meet your AI sommelier &mdash; on{' '}
                   <span className="italic text-wine-300">your own catalog.</span>
                 </h2>
                 <p className="mt-5 text-cream-50/65 text-lg max-w-md leading-relaxed">
@@ -118,6 +122,7 @@ export default function DemoForm() {
                     </li>
                   ))}
                 </ul>
+                </div>
               </div>
 
               <div className="bg-cream-50 rounded-3xl p-7 sm:p-8 shadow-chat">

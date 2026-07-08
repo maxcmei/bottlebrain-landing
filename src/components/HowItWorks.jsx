@@ -79,8 +79,8 @@ const steps = [
   },
   {
     n: '02',
-    title: 'It learns every bottle',
-    body: 'Each wine is enriched with style, region, tasting notes, and food pairings — so the recommendation sounds like you, not a search engine.',
+    title: 'BottleBrain learns every bottle',
+    body: 'It studies each wine you carry — style, region, tasting notes, food pairings — so recommendations sound like your shop, not a search engine.',
     Visual: LearnVisual,
   },
   {

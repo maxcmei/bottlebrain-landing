@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Reveal, SectionBadge } from './ui'
+import { Reveal, SectionBadge, PatternFade } from './ui'
 import { CellarRack, BubbleField, DARK_LANES } from './cellar'
 
 const ease = [0.21, 0.6, 0.35, 1]
@@ -99,7 +99,8 @@ export default function Analytics() {
       <BubbleField dark lanes={DARK_LANES} />
       <div className="mx-auto max-w-[1180px] relative z-10">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-16 items-center">
-          <div>
+          <div className="relative">
+            <PatternFade rgb="22, 3, 8" strength={0.55} />
             <Reveal>
               <SectionBadge dark>The dashboard</SectionBadge>
             </Reveal>

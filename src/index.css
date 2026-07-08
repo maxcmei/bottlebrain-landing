@@ -4,12 +4,18 @@
 
 /* Glyph transplant: Fraunces' roman lowercase f has a calligraphic
    under-baseline hook at display sizes that reads like highlight
-   styling on plain heading text. These faces override ONLY U+0066
-   (f): upright headings get Playfair Display's conventional f, while
-   the italic highlights keep Fraunces' own flamboyant italic f. */
+   styling on plain heading text. This face overrides ONLY U+0066 (f):
+   upright headings get Noto Serif's conventional f, while the italic
+   highlights keep Fraunces' own flamboyant italic f.
+   Donor choice matters: the f renders in a separate shaping run from
+   the letters around it (no cross-font kerning or fi ligature — and
+   the headings' negative letter-spacing disables ligatures anyway),
+   so the donor f must stay inside its own advance width. Playfair's
+   ball terminal crowded the following i's dot ("fïnally"); Noto
+   Serif's f is weight-matched to Fraunces and clears the dot. */
 @font-face {
   font-family: 'Fraunces Tamed-f';
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vXDXbtPK-F2qC0s.woff2)
+  src: url(https://fonts.gstatic.com/s/notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf6D33WsNFH.woff2)
     format('woff2');
   font-style: normal;
   font-weight: 340 640;
@@ -95,16 +101,16 @@
     background-image:
       radial-gradient(ellipse 55% 45% at 84% 6%, rgba(232, 139, 160, 0.13) 0%, transparent 70%),
       radial-gradient(ellipse 50% 42% at 8% 96%, rgba(217, 176, 112, 0.11) 0%, transparent 70%),
-      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px),
-      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px);
+      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.05) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.05) 0 1px, transparent 1px 58px);
   }
 
   .parchment-alt {
     background-image:
       radial-gradient(ellipse 55% 45% at 12% 8%, rgba(217, 176, 112, 0.12) 0%, transparent 70%),
       radial-gradient(ellipse 52% 44% at 90% 92%, rgba(232, 139, 160, 0.12) 0%, transparent 70%),
-      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px),
-      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.032) 0 1px, transparent 1px 58px);
+      repeating-linear-gradient(45deg, rgba(139, 26, 58, 0.05) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(139, 26, 58, 0.05) 0 1px, transparent 1px 58px);
   }
 
   .text-balance {
@@ -112,11 +118,12 @@
   }
 
   /* Wine-rack diamond lattice — the cellar's grid. Pair with an
-     inline mask-image so it only shows where the light falls. */
+     inline mask-image so it only shows where the light falls.
+     Opacity tuned up from 0.12 — faint panels couldn't show it at all. */
   .cellar-rack {
     background-image:
-      repeating-linear-gradient(45deg, rgba(232, 139, 160, 0.12) 0 1px, transparent 1px 58px),
-      repeating-linear-gradient(-45deg, rgba(232, 139, 160, 0.12) 0 1px, transparent 1px 58px);
+      repeating-linear-gradient(45deg, rgba(232, 139, 160, 0.19) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(-45deg, rgba(232, 139, 160, 0.19) 0 1px, transparent 1px 58px);
   }
 
   /* Candlelit version — brighter, warmer, revealed around the cursor */

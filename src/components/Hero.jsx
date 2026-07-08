@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Check, ArrowUpRight } from 'lucide-react'
 import ChatDemo from './ChatDemo'
 import { CellarRack, BubbleField, DARK_LANES } from './cellar'
+import { PatternFade } from './ui'
 
 const ease = [0.21, 0.6, 0.35, 1]
 
@@ -134,7 +135,11 @@ export default function Hero() {
       <div className="mx-auto max-w-[1180px] w-full px-5 relative z-10 pt-36 pb-20 lg:pt-40 lg:pb-24">
         <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-14 lg:gap-8 items-center">
           {/* ——— Copy ——— */}
-          <div className="max-w-xl">
+          <div className="max-w-xl relative">
+            <PatternFade rgb="22, 3, 8" strength={0.45} />
+            {/* relative: keeps the copy in the positioned layer, above the
+                fade, even after framer strips its entrance transforms */}
+            <div className="relative">
             <motion.a
               href="https://www.petitphilippe.com"
               target="_blank"
@@ -229,6 +234,7 @@ export default function Hero() {
                 </li>
               ))}
             </motion.ul>
+            </div>
           </div>
 
           {/* ——— Product ——— */}
