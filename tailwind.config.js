@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Epilogue', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
+        display: ['Fraunces Tamed-f', 'Fraunces', 'Georgia', 'serif'],
       },
       colors: {
         wine: {

@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Glyph transplant: Fraunces' roman lowercase f has a calligraphic
+   under-baseline hook at display sizes that reads like highlight
+   styling on plain heading text. These faces override ONLY U+0066
+   (f): upright headings get Playfair Display's conventional f, while
+   the italic highlights keep Fraunces' own flamboyant italic f. */
+@font-face {
+  font-family: 'Fraunces Tamed-f';
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vXDXbtPK-F2qC0s.woff2)
+    format('woff2');
+  font-style: normal;
+  font-weight: 340 640;
+  unicode-range: U+0066;
+}
+@font-face {
+  font-family: 'Fraunces Tamed-f';
+  src: url(https://fonts.gstatic.com/s/fraunces/v38/6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjdfeQ7ZXk8kD6.woff2)
+    format('woff2');
+  font-style: italic;
+  font-weight: 340 640;
+  unicode-range: U+0066;
+}
+
 :root {
   --burgundy: #8b1a3a;
   --burgundy-deep: #2a0a14;

@@ -16,7 +16,7 @@ export default function Testimonial() {
           >
             Customers walk in asking for the exact bottle it recommended the
             night before. It&rsquo;s like the shop{' '}
-            <span className="italic text-wine-800">stays open after we lock the door.</span>
+            <span className="italic text-wine-800">stays open after we lock the door.&rdquo;</span>
           </blockquote>
         </Reveal>
         <Reveal delay={0.2}>
