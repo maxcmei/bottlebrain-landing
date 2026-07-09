@@ -15,32 +15,32 @@ const paragraphs = [
   `BottleBrain didn't start as a startup. It started as a favor.`,
 
   `Max's dad, Mark, runs a fine-wine shop in Charlotte called Petit
-  Philippe. If you've ever been in a good wine shop, you know the trick
-  he does: you mention dinner plans, he asks two questions, and somehow
-  you leave with exactly the right bottle. People drive across town for
-  that.`,
+  Philippe. If you've ever been in a good wine shop, you've probably met
+  someone like Mark. You mention dinner plans, he asks a couple
+  questions, and somehow you leave with exactly the right bottle. People
+  drive across town for that.`,
 
   `His website couldn't do any of it. Same bottles, technically. But
   online, the shop that could talk you into the perfect $40 Barolo was
-  reduced to a grid of labels and a search bar. Everything that made the
-  place special stopped at the door.`,
+  reduced to a grid of labels and a search bar. None of what made the
+  shop special translated online.`,
 
-  `So, between classes at UNC, we built Philippe: an AI sommelier that
+  `Between classes at UNC, we built Philippe: an AI sommelier that
   reads the shop's live inventory and talks to customers the way Mark
   does. It asks what you're cooking. It sticks to your budget. If a
   bottle just sold out, it says so and offers to have Mark order one for
   you.`,
 
   `The first versions were bad in ways only a wine merchant could
-  explain, and Mark explained them, loudly. That's how it got good — it
-  grew up on a real shop floor, with a real shop owner grading its
-  homework. Today Philippe talks to Petit Philippe's customers every
-  day, and the shop keeps selling wine long after the lights go off.`,
+  explain, and Mark explained them, loudly. That's how it got better.
+  Every week Mark found something new that was wrong, and every week we
+  fixed it. Today Philippe helps customers every day, and Petit Philippe
+  keeps selling wine long after the lights go off.`,
 
   `We think every independent wine shop deserves this. Not a chatbot
   with a wine sticker on it — a sommelier that's fluent in your shelves
-  and your voice. The big chains have data teams. You have taste. It's
-  about time that counted online.`,
+  and your voice. Independent shops already have the expertise. We just
+  think their websites should too.`,
 ]
 
 const founders = [
@@ -89,8 +89,7 @@ export default function About() {
                 >
                   team@bottlebrain.io
                 </a>
-                . One of the two of us will answer &mdash; usually the same
-                day.
+                . It&rsquo;ll be one of us who answers. Usually within a day.
               </p>
               <p className="text-ink-700 text-[16.5px] leading-[1.8]">Thanks for reading,</p>
             </div>
