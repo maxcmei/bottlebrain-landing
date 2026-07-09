@@ -43,6 +43,12 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Rubber-band overscroll (desktop and iOS Safari) reveals the ROOT
+       background, not the body's — paint it cellar-dark so pulling past
+       the top/bottom reads as the page continuing, not a white flash.
+       Every page starts and ends on a wine-950 section, so this is
+       invisible except during the bounce. */
+    background-color: var(--wine-black);
   }
 
   body {

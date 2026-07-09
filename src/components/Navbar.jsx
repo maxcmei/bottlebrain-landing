@@ -3,12 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Wordmark from './Wordmark'
 
-const links = [
-  { label: 'How it Works', href: '#how-it-works' },
-  { label: 'Features', href: '#features' },
-  { label: 'Analytics', href: '#analytics' },
-  { label: 'FAQ', href: '#faq' },
+// Absolute paths (/#section) so the nav works from subpages too;
+// on the home page the browser still treats them as same-page anchors.
+// Two groups on purpose: sectionLinks scroll the home page, pageLinks
+// leave it — a thin divider keeps that distinction visible. Future
+// subpages (pricing, comparisons, …) belong in pageLinks.
+const sectionLinks = [
+  { label: 'How it Works', href: '/#how-it-works' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Analytics', href: '/#analytics' },
+  { label: 'FAQ', href: '/#faq' },
 ]
+
+const pageLinks = [{ label: 'About', href: '/about' }]
 
 /*
  * The pill adapts to what's underneath it: dark glass over the dark
@@ -90,7 +97,7 @@ export default function Navbar() {
         }`}
       >
         <a
-          href="#"
+          href="/"
           className="shrink-0"
           style={{ color: brandColor, transition: 'color 0.2s ease' }}
         >
@@ -98,7 +105,29 @@ export default function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
+          {sectionLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`group relative text-sm font-semibold transition-colors duration-200 ${
+                light ? 'text-wine-900' : 'text-white/90'
+              }`}
+            >
+              {link.label}
+              <span
+                className={`absolute -bottom-1 left-0 h-[1.5px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
+                  light ? 'bg-wine-800' : 'bg-white/70'
+                }`}
+              />
+            </a>
+          ))}
+          <span
+            aria-hidden="true"
+            className={`h-4 w-px transition-colors duration-200 ${
+              light ? 'bg-wine-900/25' : 'bg-white/25'
+            }`}
+          />
+          {pageLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -117,7 +146,7 @@ export default function Navbar() {
           {/* 150ms: quick enough that the inversion's low-contrast
               midpoint lasts ~2 frames, slow enough to feel eased */}
           <a
-            href="#demo"
+            href="/#demo"
             className={`text-sm font-semibold px-5 py-2.5 rounded-full cursor-pointer transition-colors duration-150 ${
               light
                 ? 'bg-wine-800 text-white hover:bg-wine-900'
@@ -149,7 +178,18 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden mx-auto max-w-5xl mt-2 rounded-3xl bg-cream-50 shadow-xl p-6 space-y-1"
           >
-            {links.map((link) => (
+            {sectionLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block py-3 font-semibold text-ink-900 hover:text-wine-800 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="my-2 h-px bg-ink-900/10" aria-hidden="true" />
+            {pageLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -160,7 +200,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#demo"
+              href="/#demo"
               onClick={() => setOpen(false)}
               className="block mt-4 text-center bg-wine-800 text-white py-3 rounded-full font-semibold hover:bg-wine-900 transition-colors"
             >

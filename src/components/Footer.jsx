@@ -2,11 +2,16 @@ import Wordmark from './Wordmark'
 import { CellarRack, BubbleField, FOOTER_LANES } from './cellar'
 
 const links = [
-  { label: 'How it Works', href: '#how-it-works' },
-  { label: 'Features', href: '#features' },
-  { label: 'Analytics', href: '#analytics' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Get a Demo', href: '#demo' },
+  { label: 'How it Works', href: '/#how-it-works' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Analytics', href: '/#analytics' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Get a Demo', href: '/#demo' },
+]
+
+const companyLinks = [
+  { label: 'Our Story', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Footer() {
@@ -33,6 +38,23 @@ export default function Footer() {
               </div>
               <ul className="space-y-2.5">
                 {links.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/50 mb-4">
+                Company
+              </div>
+              <ul className="space-y-2.5">
+                {companyLinks.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
