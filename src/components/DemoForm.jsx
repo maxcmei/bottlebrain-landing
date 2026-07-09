@@ -146,48 +146,63 @@ export default function DemoForm() {
                   <form onSubmit={handleSubmit} noValidate>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-ink-900 mb-2">
+                        <label htmlFor="demo-full-name" className="block text-sm font-semibold text-ink-900 mb-2">
                           Full Name
                         </label>
                         <input
+                          id="demo-full-name"
+                          name="name"
                           type="text"
+                          autoComplete="name"
                           placeholder="Your full name"
                           value={fullName}
                           onChange={handleFullNameChange}
+                          aria-invalid={errors.fullName ? 'true' : undefined}
+                          aria-describedby={errors.fullName ? 'demo-full-name-error' : undefined}
                           className={inputClass(errors.fullName)}
                         />
                         {errors.fullName && (
-                          <p className="mt-1.5 text-xs text-red-600">{errors.fullName}</p>
+                          <p id="demo-full-name-error" className="mt-1.5 text-xs text-red-600">{errors.fullName}</p>
                         )}
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-ink-900 mb-2">
+                        <label htmlFor="demo-shop-name" className="block text-sm font-semibold text-ink-900 mb-2">
                           Shop Name
                         </label>
                         <input
+                          id="demo-shop-name"
+                          name="organization"
                           type="text"
+                          autoComplete="organization"
                           placeholder="Your shop name"
                           value={shopName}
                           onChange={handleShopNameChange}
+                          aria-invalid={errors.shopName ? 'true' : undefined}
+                          aria-describedby={errors.shopName ? 'demo-shop-name-error' : undefined}
                           className={inputClass(errors.shopName)}
                         />
                         {errors.shopName && (
-                          <p className="mt-1.5 text-xs text-red-600">{errors.shopName}</p>
+                          <p id="demo-shop-name-error" className="mt-1.5 text-xs text-red-600">{errors.shopName}</p>
                         )}
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-ink-900 mb-2">
+                        <label htmlFor="demo-email" className="block text-sm font-semibold text-ink-900 mb-2">
                           Email
                         </label>
                         <input
+                          id="demo-email"
+                          name="email"
                           type="email"
+                          autoComplete="email"
                           placeholder="you@shop.com"
                           value={email}
                           onChange={handleEmailChange}
+                          aria-invalid={errors.email ? 'true' : undefined}
+                          aria-describedby={errors.email ? 'demo-email-error' : undefined}
                           className={inputClass(errors.email)}
                         />
                         {errors.email && (
-                          <p className="mt-1.5 text-xs text-red-600">{errors.email}</p>
+                          <p id="demo-email-error" className="mt-1.5 text-xs text-red-600">{errors.email}</p>
                         )}
                       </div>
                     </div>
@@ -205,7 +220,7 @@ export default function DemoForm() {
                     </p>
 
                     {status === 'error' && (
-                      <p className="mt-3 text-sm text-center text-red-600">
+                      <p role="alert" className="mt-3 text-sm text-center text-red-600">
                         Something went wrong. Please email us directly at{' '}
                         <a
                           href="mailto:team@bottlebrain.io"
