@@ -42,8 +42,14 @@ function FunnelRow({ label, value, pct, delay }) {
 }
 
 export default function Hero() {
+  // z-[1] on the section: HowItWorks/Testimonial became `relative` for
+  // their bubble fields, which made them paint OVER the dark rounded
+  // sections they tuck under (-mt-11 / -my-11), flattening the 44px
+  // corners into hard cuts. The dark sections sit one z-level up so the
+  // rounded edges stay visible; light-section content still clears the
+  // overlap via its big top padding.
   return (
-    <section id="hero" data-nav-dark className="relative overflow-hidden hero-atmosphere grain rounded-b-[44px]">
+    <section id="hero" data-nav-dark className="relative z-[1] overflow-hidden hero-atmosphere grain rounded-b-[44px]">
       {/* light streak sweeping across the atmosphere */}
       <div aria-hidden="true" className="light-streak absolute inset-0 pointer-events-none" />
 

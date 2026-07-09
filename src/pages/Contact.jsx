@@ -39,9 +39,11 @@ export default function Contact() {
       <Navbar />
 
       {/* ——— Hero ——— */}
+      {/* rounded-b + z-[1] and the next section tucks under (-mt-11):
+          same seam treatment as the home page's dark sections */}
       <section
         data-nav-dark
-        className="relative overflow-hidden bg-wine-950 hero-atmosphere grain pt-40 lg:pt-48 pb-24 lg:pb-28 px-5"
+        className="relative z-[1] overflow-hidden bg-wine-950 hero-atmosphere grain rounded-b-[44px] pt-40 lg:pt-48 pb-24 lg:pb-28 px-5"
       >
         <CellarRack base="radial-gradient(ellipse 70% 80% at 50% 0%, black 0%, transparent 74%)" />
         <BubbleField dark lanes={HERO_LANES} />
@@ -68,7 +70,7 @@ export default function Contact() {
       </section>
 
       {/* ——— Channels ——— */}
-      <section className="relative overflow-hidden bg-cream-50 parchment py-20 lg:py-24 px-5">
+      <section className="relative overflow-hidden bg-cream-50 parchment -mt-11 pt-32 lg:pt-36 pb-20 lg:pb-24 px-5">
         <BubbleField lanes={CARD_LANES} />
         <div className="relative mx-auto max-w-[980px] grid sm:grid-cols-3 gap-5">
           {channels.map((c, i) => (

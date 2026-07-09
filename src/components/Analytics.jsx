@@ -92,8 +92,10 @@ const bullets = [
 ]
 
 export default function Analytics() {
+  // z-[1]: see Hero.jsx — keeps the rounded corners painting over the
+  // positioned light sections on both sides of the -my-11 overlap
   return (
-    <section id="analytics" data-nav-dark className="relative overflow-hidden dark-atmosphere grain py-28 lg:py-32 px-5 rounded-[44px] -my-11">
+    <section id="analytics" data-nav-dark className="relative z-[1] overflow-hidden dark-atmosphere grain py-28 lg:py-32 px-5 rounded-[44px] -my-11">
       <div aria-hidden="true" className="light-streak absolute inset-0 pointer-events-none" />
       <CellarRack base="radial-gradient(ellipse 65% 80% at 22% 42%, black 0%, transparent 78%)" />
       <BubbleField dark lanes={ANALYTICS_LANES} />
