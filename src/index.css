@@ -52,7 +52,13 @@
   }
 
   body {
-    @apply font-sans text-ink-900 bg-cream-50 overflow-x-hidden;
+    /* NO cream here — iOS 26 Safari ignores theme-color and tints its
+       Liquid Glass status/tool bars by sampling the html/body colors;
+       a cream body (#fdfbf8 ≈ white) painted the phone chrome white
+       over the dark site. Body stays wine-black like html; every page's
+       root wrapper paints its own cream where needed. */
+    @apply font-sans text-ink-900 overflow-x-hidden;
+    background-color: var(--wine-black);
     margin: 0;
   }
 
