@@ -8,20 +8,22 @@ import { motion } from 'framer-motion'
 
 const BRAND = '#8b1a3a'
 
-// The SAME glass as the wordmark (assets/glass.png as a color mask) — one
-// glass everywhere: logo, favicon, this hero mock, and the live widget.
-// Brand consistency is deliberate; don't reintroduce a hand-drawn variant.
-function GlassIcon({ size = 20, color = '#fff' }) {
+// The BottleBrain solo mark: the wordmark glass with the "thrown swirl" cut
+// (assets/glass-swirl.png as a color mask) — the same mark as the favicons
+// and the live widget. The width matches the glass's real 244:502 aspect so
+// there's no phantom horizontal padding throwing off spacing. Brand
+// consistency is deliberate; don't reintroduce a hand-drawn variant.
+function GlassIcon({ size = 22, color = '#fff' }) {
   return (
     <span
       aria-hidden="true"
       style={{
         display: 'inline-block',
         height: size,
-        width: size,
+        width: Math.round(size * (244 / 502)),
         backgroundColor: color,
-        WebkitMaskImage: 'url(/assets/glass.png)',
-        maskImage: 'url(/assets/glass.png)',
+        WebkitMaskImage: 'url(/assets/glass-swirl.png)',
+        maskImage: 'url(/assets/glass-swirl.png)',
         WebkitMaskSize: 'contain',
         maskSize: 'contain',
         WebkitMaskRepeat: 'no-repeat',
