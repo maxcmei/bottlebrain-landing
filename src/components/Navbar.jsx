@@ -75,7 +75,14 @@ export default function Navbar() {
   const brandColor = light ? '#8b1a3a' : '#fdfbf8'
 
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50">
+    // viewport-fit=cover lets the page run under the iOS status bar (so
+    // Safari's glass chrome samples cellar-dark instead of white); the
+    // nav must then respect the safe-area inset or it hides behind the
+    // clock/Dynamic Island. Desktop: env() is 0, max() keeps the 1rem.
+    <nav
+      className="fixed left-4 right-4 z-50"
+      style={{ top: 'max(1rem, env(safe-area-inset-top))' }}
+    >
       <div
         ref={barRef}
         // translateZ(0): community-verified mitigation for Chrome's
