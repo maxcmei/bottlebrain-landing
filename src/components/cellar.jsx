@@ -66,7 +66,7 @@ export function makeLanes(
 }
 
 /* the page-wide connective field (light glassy rings, subtle) */
-const LANES = makeLanes(22, 7, { minSize: 3, maxSize: 8, peak: [0.4, 0.62] })
+const LANES = makeLanes(22, 7, { minSize: 3, maxSize: 8, peak: [0.55, 0.8] })
 
 /* champagne physics, wine-cellar palette.
    Light sections: glassy rings — transparent centers with a thin
@@ -86,7 +86,7 @@ function bubbleStyle(size, dark, tone) {
     }
   }
   const rim = tone === 'gold' ? '200,155,90' : '139,26,58'
-  const rimA = tone === 'gold' ? 0.45 : 0.62
+  const rimA = tone === 'gold' ? 0.6 : 0.8
   return {
     width: size,
     height: size,
@@ -129,16 +129,16 @@ export function BubbleField({ dark = false, page = false, lanes = LANES }) {
    where the page is calm, least where it's already working hard).   */
 
 /* hero: headline + chat demo + stat cards = the busiest screen → quiet */
-export const HERO_LANES = makeLanes(8, 11, { maxSize: 7, peak: [0.4, 0.65], gold: 0.3 })
+export const HERO_LANES = makeLanes(8, 11, { maxSize: 7, peak: [0.55, 0.8], gold: 0.3 })
 
 /* analytics: dashboard mock carries the section → moderate accent */
-export const ANALYTICS_LANES = makeLanes(11, 23, { maxSize: 8, peak: [0.4, 0.68], gold: 0.28 })
+export const ANALYTICS_LANES = makeLanes(11, 23, { maxSize: 8, peak: [0.55, 0.82], gold: 0.28 })
 
 /* footer: dark, roomy, mostly margins → the fullest glass on the page */
-export const FOOTER_LANES = makeLanes(17, 41, { maxSize: 9.5, peak: [0.45, 0.72], gold: 0.3 })
+export const FOOTER_LANES = makeLanes(17, 41, { maxSize: 9.5, peak: [0.6, 0.88], gold: 0.3 })
 
 /* testimonial: one quote in open space → dense, keeps the moment alive */
-export const TESTIMONIAL_LANES = makeLanes(18, 57, { minSize: 3.5, maxSize: 9, peak: [0.55, 0.88] })
+export const TESTIMONIAL_LANES = makeLanes(18, 57, { minSize: 3.5, maxSize: 9, peak: [0.7, 0.94] })
 
 /* FAQ: a calm list → gently lively */
-export const FAQ_LANES = makeLanes(14, 71, { minSize: 3.5, maxSize: 8, peak: [0.5, 0.8] })
+export const FAQ_LANES = makeLanes(14, 71, { minSize: 3.5, maxSize: 8, peak: [0.65, 0.9] })
