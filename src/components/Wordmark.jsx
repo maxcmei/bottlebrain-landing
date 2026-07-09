@@ -12,8 +12,10 @@ const glassMask = {
   height: '0.7em',
   aspectRatio: '244 / 502',
   backgroundColor: 'currentColor',
-  WebkitMaskImage: 'url(/assets/glass.png)',
-  maskImage: 'url(/assets/glass.png)',
+  // The thrown-swirl mark (2026-07-09): same glass silhouette, with the
+  // swirl cut (BOLD optical variant: at text sizes the standard thin cut turns to mush, so the wordmark uses a thicker cut — same move as type optical sizes) — keeps the wordmark's "i" in lockstep with the solo mark.
+  WebkitMaskImage: 'url(/assets/glass-swirl-bold.png)',
+  maskImage: 'url(/assets/glass-swirl-bold.png)',
   WebkitMaskSize: 'contain',
   maskSize: 'contain',
   WebkitMaskRepeat: 'no-repeat',
