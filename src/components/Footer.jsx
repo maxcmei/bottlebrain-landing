@@ -20,7 +20,7 @@ export default function Footer() {
             <span className="text-cream-50">
               <Wordmark className="text-2xl" />
             </span>
-            <p className="mt-4 text-white/45 text-sm max-w-xs leading-relaxed">
+            <p className="mt-4 text-white/50 text-sm max-w-xs leading-relaxed">
               The AI sommelier for independent wine shops. Your cellar, fluent
               in customer.
             </p>
@@ -28,7 +28,7 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
             <div>
-              <div className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+              <div className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/50 mb-4">
                 Explore
               </div>
               <ul className="space-y-2.5">
@@ -45,7 +45,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <div className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+              <div className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/50 mb-4">
                 Contact
               </div>
               <a
@@ -54,16 +54,16 @@ export default function Footer() {
               >
                 team@bottlebrain.io
               </a>
-              <p className="mt-2.5 text-sm text-white/45">Charlotte, NC</p>
+              <p className="mt-2.5 text-sm text-white/50">Charlotte, NC</p>
             </div>
           </div>
         </div>
 
         <div className="mt-14 pt-8 border-t border-white/[0.07] flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/35 text-xs">
+          <p className="text-white/50 text-xs">
             &copy; {new Date().getFullYear()} BottleBrain. All rights reserved.
           </p>
-          <p className="text-white/35 text-xs">
+          <p className="text-white/50 text-xs">
             Pairs well with independent wine shops.
           </p>
         </div>

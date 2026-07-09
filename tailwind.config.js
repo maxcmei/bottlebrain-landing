@@ -37,7 +37,7 @@ export default {
           900: '#1d1520',
           700: '#4b3a48',
           500: '#7b6c78',
-          400: '#9c8e99',
+          400: '#7f6f7c', // was #9c8e99 (3.1:1 on white) — fails WCAG AA for the 10-12px text that uses it; 4.7:1 now
         },
       },
       borderRadius: {
