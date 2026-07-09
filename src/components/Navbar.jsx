@@ -134,6 +134,7 @@ export default function Navbar() {
             light ? 'text-ink-900' : 'text-white'
           }`}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
