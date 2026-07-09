@@ -1,4 +1,5 @@
 import { Reveal, SectionHeading } from './ui'
+import { BubbleField, FEATURES_LANES } from './cellar'
 
 function Card({ children, className = '', delay = 0 }) {
   return (
@@ -156,8 +157,10 @@ function VoiceVisual() {
 
 export default function Features() {
   return (
-    <section id="features" className="pt-28 lg:pt-32 pb-40 lg:pb-44 px-5 bg-cream-100 parchment-alt">
-      <div className="mx-auto max-w-[1180px]">
+    <section id="features" className="relative overflow-hidden pt-28 lg:pt-32 pb-40 lg:pb-44 px-5 bg-cream-100 parchment-alt">
+      {/* behind the tiles: the cards occlude the field, so it peeks through the gutters */}
+      <BubbleField lanes={FEATURES_LANES} />
+      <div className="relative mx-auto max-w-[1180px]">
         <SectionHeading
           badge="What it does"
           title={<>Everything a great floor somm does.<br className="hidden md:block" /> On every page, all at once.</>}

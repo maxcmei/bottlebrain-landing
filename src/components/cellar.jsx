@@ -66,7 +66,7 @@ export function makeLanes(
 }
 
 /* the page-wide connective field (light glassy rings, subtle) */
-const LANES = makeLanes(22, 7, { minSize: 3, maxSize: 8, peak: [0.55, 0.8] })
+const LANES = makeLanes(22, 7, { minSize: 3, maxSize: 8, peak: [0.62, 0.88] })
 
 /* champagne physics, wine-cellar palette.
    Light sections: glassy rings — transparent centers with a thin
@@ -132,13 +132,19 @@ export function BubbleField({ dark = false, page = false, lanes = LANES }) {
 export const HERO_LANES = makeLanes(8, 11, { maxSize: 7, peak: [0.55, 0.8], gold: 0.3 })
 
 /* analytics: dashboard mock carries the section → moderate accent */
-export const ANALYTICS_LANES = makeLanes(11, 23, { maxSize: 8, peak: [0.55, 0.82], gold: 0.28 })
+export const ANALYTICS_LANES = makeLanes(11, 23, { maxSize: 8, peak: [0.62, 0.9], gold: 0.28 })
 
 /* footer: dark, roomy, mostly margins → the fullest glass on the page */
-export const FOOTER_LANES = makeLanes(17, 41, { maxSize: 9.5, peak: [0.6, 0.88], gold: 0.3 })
+export const FOOTER_LANES = makeLanes(17, 41, { maxSize: 9.5, peak: [0.68, 0.95], gold: 0.3 })
 
 /* testimonial: one quote in open space → dense, keeps the moment alive */
-export const TESTIMONIAL_LANES = makeLanes(18, 57, { minSize: 3.5, maxSize: 9, peak: [0.7, 0.94] })
+export const TESTIMONIAL_LANES = makeLanes(18, 57, { minSize: 3.5, maxSize: 9, peak: [0.78, 1] })
 
 /* FAQ: a calm list → gently lively */
-export const FAQ_LANES = makeLanes(14, 71, { minSize: 3.5, maxSize: 8, peak: [0.65, 0.9] })
+export const FAQ_LANES = makeLanes(14, 71, { minSize: 3.5, maxSize: 8, peak: [0.72, 0.95] })
+
+/* how-it-works & features: tile grids — bubbles rise BEHIND the opaque
+   cards and peek through the gutters/margins (the tiles do the occluding,
+   so a fuller field never crowds the content) */
+export const HOWITWORKS_LANES = makeLanes(13, 83, { minSize: 3.5, maxSize: 8, peak: [0.6, 0.85] })
+export const FEATURES_LANES = makeLanes(14, 97, { minSize: 3.5, maxSize: 8.5, peak: [0.6, 0.85] })

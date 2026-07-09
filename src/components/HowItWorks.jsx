@@ -1,4 +1,5 @@
 import { Reveal, SectionHeading } from './ui'
+import { BubbleField, HOWITWORKS_LANES } from './cellar'
 
 /* Mini visual: POS sync */
 function SyncVisual() {
@@ -93,8 +94,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="-mt-11 pt-40 lg:pt-44 pb-28 lg:pb-32 px-5 bg-cream-50 parchment">
-      <div className="mx-auto max-w-[1180px]">
+    <section id="how-it-works" className="relative overflow-hidden -mt-11 pt-40 lg:pt-44 pb-28 lg:pb-32 px-5 bg-cream-50 parchment">
+      {/* behind the tiles: the cards occlude the field, so it peeks through the gutters */}
+      <BubbleField lanes={HOWITWORKS_LANES} />
+      <div className="relative mx-auto max-w-[1180px]">
         <SectionHeading
           badge="How it works"
           title={<>Uncorked in three steps.</>}
