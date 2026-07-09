@@ -8,11 +8,28 @@ import { motion } from 'framer-motion'
 
 const BRAND = '#8b1a3a'
 
+// The SAME glass as the wordmark (assets/glass.png as a color mask) — one
+// glass everywhere: logo, favicon, this hero mock, and the live widget.
+// Brand consistency is deliberate; don't reintroduce a hand-drawn variant.
 function GlassIcon({ size = 20, color = '#fff' }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 2h8l-1 8.5a4 4 0 0 1-3 3.4V19h3v2H9v-2h3v-5.1a4 4 0 0 1-3-3.4L8 2z" />
-    </svg>
+    <span
+      aria-hidden="true"
+      style={{
+        display: 'inline-block',
+        height: size,
+        width: size,
+        backgroundColor: color,
+        WebkitMaskImage: 'url(/assets/glass.png)',
+        maskImage: 'url(/assets/glass.png)',
+        WebkitMaskSize: 'contain',
+        maskSize: 'contain',
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center',
+        maskPosition: 'center',
+      }}
+    />
   )
 }
 
