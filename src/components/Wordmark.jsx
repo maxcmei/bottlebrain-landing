@@ -23,8 +23,16 @@ const glassMask = {
 }
 
 export default function Wordmark({ className = '' }) {
+  // role="img" + aria-label: the glass "i" is a masked span between the text
+  // nodes "BottleBra" and "n", so without this the accessible name of every
+  // wordmark (nav brand link, footer) was literally "BottleBran". Treating
+  // the composite as one labeled unit gives AT the real brand name.
   return (
-    <span className={`font-extrabold tracking-tight ${className}`}>
+    <span
+      role="img"
+      aria-label="BottleBrain"
+      className={`font-extrabold tracking-tight ${className}`}
+    >
       BottleBra
       <span aria-hidden="true" style={glassMask} />
       n
