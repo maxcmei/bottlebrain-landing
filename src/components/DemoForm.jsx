@@ -139,7 +139,11 @@ export default function DemoForm() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit}>
+                  // noValidate: the email input is type="email", so without it
+                  // the browser's native bubble fires first and handleSubmit
+                  // never runs — two clashing validation UXes on the one
+                  // conversion form. The styled custom validation owns it.
+                  <form onSubmit={handleSubmit} noValidate>
                     <div className="space-y-4">
                       <div>
                         <label className="block text-sm font-semibold text-ink-900 mb-2">
