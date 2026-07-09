@@ -22,27 +22,51 @@ export function CellarRack({ base }) {
   )
 }
 
-/* left%, size px, duration s, delay s, x-drift px, peak opacity, tone */
-const LANES = [
-  ['4%', 7, 22, 0, 16, 0.7, 'wine'],
-  ['9%', 6, 28, 9, -12, 0.5, 'gold'],
-  ['16%', 10, 19, 4, 20, 0.65, 'wine'],
-  ['22%', 6, 26, 14, -14, 0.55, 'wine'],
-  ['29%', 5, 31, 2, 10, 0.45, 'wine'],
-  ['36%', 8, 21, 11, -18, 0.7, 'wine'],
-  ['43%', 6, 27, 6, 12, 0.5, 'wine'],
-  ['51%', 11, 18, 16, 22, 0.6, 'gold'],
-  ['58%', 5, 30, 1, -10, 0.45, 'wine'],
-  ['64%', 7, 23, 8, 16, 0.6, 'wine'],
-  ['71%', 6, 29, 13, -16, 0.55, 'wine'],
-  ['78%', 9, 20, 3, 18, 0.7, 'wine'],
-  ['85%', 5, 32, 10, -12, 0.45, 'wine'],
-  ['91%', 7, 24, 17, 14, 0.6, 'gold'],
-  ['96%', 6, 27, 5, -14, 0.5, 'wine'],
-  /* edge lanes — the side margins are never covered by cards */
-  ['1.5%', 8, 23, 12, 12, 0.7, 'wine'],
-  ['98%', 7, 25, 7, -12, 0.65, 'wine'],
-]
+/* ——— Champagne lane generation ———
+   Real champagne fizz: LOTS of small bubbles with the occasional larger
+   one (sizes are weighted small, r² distribution), larger bubbles rising
+   faster than tiny ones, loose trains rather than a uniform grid.
+   Delays are NEGATIVE so every lane is already mid-rise at page load —
+   the glass is never flat. Deterministic PRNG keeps lanes stable across
+   renders (no hydration/looks-different-every-reload weirdness).
+
+   Density is tuned PER SECTION, inversely to how busy the section is:
+   sparse areas (testimonial, FAQ, footer) fizz the most; busy areas
+   (hero, features) stay quiet so nothing feels crowded. */
+function mulberry32(seed) {
+  let a = seed >>> 0
+  return () => {
+    a |= 0; a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+/* returns [left%, size px, duration s, delay s, x-drift px, peak, tone] */
+export function makeLanes(
+  count,
+  seed,
+  { minSize = 2.5, maxSize = 9, minDur = 12, maxDur = 26, peak = [0.35, 0.65], gold = 0.22 } = {},
+) {
+  const rnd = mulberry32(seed)
+  return Array.from({ length: count }, (_, i) => {
+    // even horizontal spread with jitter — loose trains, no grid
+    const left = `${(((i + 0.15 + rnd() * 0.7) / count) * 96 + 1.5).toFixed(1)}%`
+    const size = Math.round((minSize + rnd() ** 2 * (maxSize - minSize)) * 2) / 2
+    const sizeT = (size - minSize) / (maxSize - minSize)
+    // champagne physics: bigger bubbles rise faster; tiny ones drift up slowly
+    const duration = Math.round(maxDur - sizeT * (maxDur - minDur) + (rnd() - 0.5) * 5)
+    const delay = -Math.round(rnd() * duration) // mid-cycle at load
+    const drift = Math.round((rnd() - 0.5) * 34)
+    // tiny bubbles are fainter — they'd be pinpricks of light, not beacons
+    const peakO = Math.round((peak[0] + sizeT * (peak[1] - peak[0]) + rnd() * 0.06) * 100) / 100
+    return [left, size, duration, delay, drift, peakO, rnd() < gold ? 'gold' : 'wine']
+  })
+}
+
+/* the page-wide connective field (light glassy rings, subtle) */
+const LANES = makeLanes(22, 7, { minSize: 3, maxSize: 8, peak: [0.4, 0.62] })
 
 /* champagne physics, wine-cellar palette.
    Light sections: glassy rings — transparent centers with a thin
@@ -56,7 +80,9 @@ function bubbleStyle(size, dark, tone) {
       width: size,
       height: size,
       background: `radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), rgba(${glow},0.4))`,
-      boxShadow: `0 0 6px rgba(${glow},0.45)`,
+      // glow scales with the bubble — a fixed 6px halo made 3px bubbles
+      // read as blurry dots instead of tiny bright points
+      boxShadow: `0 0 ${Math.max(3, size * 0.8)}px rgba(${glow},0.45)`,
     }
   }
   const rim = tone === 'gold' ? '200,155,90' : '139,26,58'
@@ -71,7 +97,7 @@ function bubbleStyle(size, dark, tone) {
 export function BubbleField({ dark = false, page = false, lanes = LANES }) {
   // page mode spreads staggered copies of the lanes down the
   // document, so every viewport-full of page holds a few bubbles
-  const copies = page ? [0, 1, 2, 3] : [0]
+  const copies = page ? [0, 1, 2] : [0]
   return (
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
       {copies.flatMap((c) =>
@@ -98,10 +124,21 @@ export function BubbleField({ dark = false, page = false, lanes = LANES }) {
   )
 }
 
-/* sparser lanes for dark sections, so they accent rather than crowd;
-   every third bubble goes champagne-gold against the dark */
-export const DARK_LANES = LANES.filter((_, i) => i % 2 === 0).map(
-  ([l, s, d, delay, drift, peak], i) => [
-    l, s, d, delay, drift, Math.min(peak + 0.2, 0.7), i % 3 === 1 ? 'gold' : 'wine',
-  ],
-)
+/* ——— Per-section lane sets ———
+   Density inversely tracks visual busyness (Max's rule: fizz the most
+   where the page is calm, least where it's already working hard).   */
+
+/* hero: headline + chat demo + stat cards = the busiest screen → quiet */
+export const HERO_LANES = makeLanes(8, 11, { maxSize: 7, peak: [0.4, 0.65], gold: 0.3 })
+
+/* analytics: dashboard mock carries the section → moderate accent */
+export const ANALYTICS_LANES = makeLanes(11, 23, { maxSize: 8, peak: [0.4, 0.68], gold: 0.28 })
+
+/* footer: dark, roomy, mostly margins → the fullest glass on the page */
+export const FOOTER_LANES = makeLanes(17, 41, { maxSize: 9.5, peak: [0.45, 0.72], gold: 0.3 })
+
+/* testimonial: one quote in open space → dense, keeps the moment alive */
+export const TESTIMONIAL_LANES = makeLanes(18, 57, { minSize: 3.5, maxSize: 9, peak: [0.55, 0.88] })
+
+/* FAQ: a calm list → gently lively */
+export const FAQ_LANES = makeLanes(14, 71, { minSize: 3.5, maxSize: 8, peak: [0.5, 0.8] })

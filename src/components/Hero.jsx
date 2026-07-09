@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowUpRight } from 'lucide-react'
 import ChatDemo from './ChatDemo'
-import { CellarRack, BubbleField, DARK_LANES } from './cellar'
+import { CellarRack, BubbleField, HERO_LANES } from './cellar'
 import { PatternFade } from './ui'
 
 const ease = [0.21, 0.6, 0.35, 1]
@@ -49,7 +49,7 @@ export default function Hero() {
 
       {/* cellar-rack lattice + rising bubbles */}
       <CellarRack base="radial-gradient(ellipse 78% 90% at 60% 30%, black 0%, transparent 80%)" />
-      <BubbleField dark lanes={DARK_LANES} />
+      <BubbleField dark lanes={HERO_LANES} />
 
       {/* bottle neck leaning into frame, cropped by the hero edge */}
       <motion.div

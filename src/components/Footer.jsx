@@ -1,5 +1,5 @@
 import Wordmark from './Wordmark'
-import { CellarRack, BubbleField, DARK_LANES } from './cellar'
+import { CellarRack, BubbleField, FOOTER_LANES } from './cellar'
 
 const links = [
   { label: 'How it Works', href: '#how-it-works' },
@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer data-nav-dark className="relative overflow-hidden bg-wine-950 grain rounded-t-[44px] -mt-11">
       <CellarRack base="radial-gradient(ellipse 70% 65% at 50% 100%, black 0%, transparent 78%)" />
-      <BubbleField dark lanes={DARK_LANES} />
+      <BubbleField dark lanes={FOOTER_LANES} />
       <div className="mx-auto max-w-[1180px] px-5 pt-16 pb-10 relative z-10">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-10">
           <div>

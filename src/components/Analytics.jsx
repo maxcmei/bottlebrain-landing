@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Reveal, SectionBadge, PatternFade } from './ui'
-import { CellarRack, BubbleField, DARK_LANES } from './cellar'
+import { CellarRack, BubbleField, ANALYTICS_LANES } from './cellar'
 
 const ease = [0.21, 0.6, 0.35, 1]
 
@@ -96,7 +96,7 @@ export default function Analytics() {
     <section id="analytics" data-nav-dark className="relative overflow-hidden dark-atmosphere grain py-28 lg:py-32 px-5 rounded-[44px] -my-11">
       <div aria-hidden="true" className="light-streak absolute inset-0 pointer-events-none" />
       <CellarRack base="radial-gradient(ellipse 65% 80% at 22% 42%, black 0%, transparent 78%)" />
-      <BubbleField dark lanes={DARK_LANES} />
+      <BubbleField dark lanes={ANALYTICS_LANES} />
       <div className="mx-auto max-w-[1180px] relative z-10">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-16 items-center">
           <div className="relative">

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SectionHeading } from './ui'
+import { BubbleField, FAQ_LANES } from './cellar'
 
 const items = [
   {
@@ -30,8 +31,9 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section id="faq" className="py-28 lg:py-32 px-5 bg-cream-100 parchment-alt">
-      <div className="mx-auto max-w-[760px]">
+    <section id="faq" className="relative overflow-hidden py-28 lg:py-32 px-5 bg-cream-100 parchment-alt">
+      <BubbleField lanes={FAQ_LANES} />
+      <div className="relative mx-auto max-w-[760px]">
         <SectionHeading
           badge="Questions"
           title="Asked and answered."

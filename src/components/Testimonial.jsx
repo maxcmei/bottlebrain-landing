@@ -1,8 +1,11 @@
 import { Reveal, PatternFade } from './ui'
+import { BubbleField, TESTIMONIAL_LANES } from './cellar'
 
 export default function Testimonial() {
   return (
-    <section className="pt-40 lg:pt-44 pb-28 lg:pb-32 px-5 bg-cream-50 parchment">
+    <section className="relative overflow-hidden pt-40 lg:pt-44 pb-28 lg:pb-32 px-5 bg-cream-50 parchment">
+      {/* densest fizz on the page — one quote in open space can carry it */}
+      <BubbleField lanes={TESTIMONIAL_LANES} />
       {/* Corner quote marks (PowerPoint-classic layout): a large opening mark
           hangs top-left of the quote, a slightly smaller closing mark sits
           bottom-right beside the attribution. The marks ARE the punctuation —
