@@ -21,9 +21,9 @@ const paragraphs = [
   drive across town for that.`,
 
   `His website couldn't do any of it. Same bottles, technically. But
-  online, the shop that could talk you into the perfect $40 Barolo was
-  reduced to a grid of labels and a search bar. None of what made the
-  shop special translated online.`,
+  the shop that could help you discover the perfect $40 Barolo was
+  reduced to a grid of labels and a search bar online. None of what made the
+  shop special translated virtually.`,
 
   `Between classes at UNC, we built Philippe: an AI sommelier that
   reads the shop's live inventory and talks to customers the way Mark
@@ -38,7 +38,7 @@ const paragraphs = [
   keeps selling wine long after the lights go off.`,
 
   `We think every independent wine shop deserves this. Not a chatbot
-  with a wine sticker on it — a sommelier that's fluent in your shelves
+  with a wine sticker on it, but a sommelier that's fluent in your shelves
   and your voice. Independent shops already have the expertise. We just
   think their websites should too.`,
 ]
