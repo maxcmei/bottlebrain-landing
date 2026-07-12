@@ -81,7 +81,7 @@ export default function About() {
                 </p>
               ))}
               <p className="text-ink-700 text-[16.5px] leading-[1.8]">
-                If you run a shop and want to see it on your own bottles, email
+                If you run a store and want to learn more, email
                 us at{' '}
                 <a
                   href="mailto:team@bottlebrain.io"
@@ -123,7 +123,7 @@ export default function About() {
               >
                 petitphilippe.com
               </a>{' '}
-              right now &mdash; go say hi and ask him something hard.
+              right now &mdash; go say hi and ask him something tricky.
             </p>
           </div>
         </Reveal>
